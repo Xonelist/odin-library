@@ -1,0 +1,38 @@
+table {
+    width: 100%;
+}
+table, th, td {
+    border: 1px solid black;
+}
+dialog {
+    position: relative ;
+    width: 1000px;
+}
+#close-dialog {
+    position: absolute;
+}
+form {
+    display: flex;
+    flex-flow: column;
+    width: 500px;
+    margin: 0 auto;
+    padding: 0 1em;
+    border: 3px ridge red;
+}
+form div {
+    margin: 1em;
+}
+form input {
+    width: 90%;
+}
+
+dialog #btnSubmit {
+    margin: 1em 0;
+    padding: 1em;
+    
+}
+
+::backdrop {
+    background: silver;
+    opacity: 0.5;
+}
