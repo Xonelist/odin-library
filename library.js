@@ -4,31 +4,11 @@ const showDialog = document.querySelector(".show");
 const closeDialog = document.querySelector(".close-dialog");
 const form = document.querySelector("#getNewBook");
 const table = document.querySelector(".table");
-let id = 0
+
 form.addEventListener("submit", function(event){
     event.preventDefault();
-    const formVal = new FormData(form);
-    const row = document.createElement("tr");
+    addBookToLibrary();
 
-    formVal.forEach((val, key) => {
-        const data = document.createElement("td");
-        data.className = key;
-        data.textContent = val;
-        row.appendChild(data);
-    });
-
-    function makeEditButton() {
-        const removeButton = document.createElement('button');
-        removeButton.textContent = 'remove';
-        removeButton.addEventListener('click', ()=>{
-            table.removeChild(removeButton.parentNode);
-        })
-        row.appendChild(removeButton);
-    }
-
-    makeEditButton(id);
-    table.appendChild(row);
-    
     form.reset();
     dialog.close();
 })
@@ -36,8 +16,27 @@ form.addEventListener("submit", function(event){
 showDialog.addEventListener("click", ()=> dialog.showModal());
 closeDialog.addEventListener("click", ()=> dialog.close());
 
-let books = [];
+//library function & variable
+
+let myLibrary = [];
 function book(title, author, pages, desc, read) {
-    let formVal = new FormData(form);    
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.desc = desc;
+    this.read = read;
 }
 
+function addBookToLibrary() {
+    const formVal = new FormData(form);
+    let tempBook = {};
+    formVal.forEach((val, key) => {
+        tempBook[key] = val;
+    })
+    console.log(tempBook)
+    const newBook = new book(tempBook['bookTitle'], tempBook['bookAuthor'], tempBook['bookPages'], tempBook['bookDescription'], tempBook['Read']) 
+    myLibrary.push(newBook)
+}
+function updateDisplay() {
+    myLibrary.forEach()
+}
